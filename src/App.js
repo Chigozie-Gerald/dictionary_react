@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "./material-design-icons-iconfont-master/dist/material-design-icons.css";
+import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
+import DragBox from "./dragBox/dragBox";
+import Dictionary from "./dictionary/dictionary";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App h100 w100">
+      <Router>
+        <Routes>
+          {/*<Route exact path="/" render={(props) => <DragBox />} />*/}
+          {/* Dynamically creating routes */}
+          <Route path="/" element={<DragBox />} />
+          <Route path="/dictionary" element={<Dictionary />} />
+          <Route exact render={(props) => <div>Not found</div>} />
+        </Routes>
+      </Router>
     </div>
   );
 }
